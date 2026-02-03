@@ -221,6 +221,63 @@
       transform: scaleX(1);
     }
 
+    /* Mobile Navigation */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top: 1px solid var(--border);
+      z-index: 100;
+      padding: 0.5rem 0.25rem;
+      padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    }
+
+    .mobile-nav-inner {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.25rem;
+    }
+
+    .mobile-nav a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 0.25rem;
+      text-decoration: none;
+      color: var(--slate);
+      font-size: 0.65rem;
+      font-weight: 500;
+      border-radius: 8px;
+      transition: all 0.2s;
+      gap: 0.25rem;
+    }
+
+    .mobile-nav a .nav-icon {
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .mobile-nav a .nav-label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    .mobile-nav a.active {
+      color: var(--accent);
+      background: rgba(137, 44, 41, 0.08);
+    }
+
+    .mobile-nav a:active {
+      transform: scale(0.95);
+    }
+
     /* Main Content */
     main {
       max-width: 1200px;
@@ -886,6 +943,10 @@
 
     /* Responsive */
     @media (max-width: 768px) {
+      body {
+        padding-bottom: 80px;
+      }
+
       .hero {
         padding: 2rem 1.5rem;
         min-height: 40vh;
@@ -893,6 +954,14 @@
 
       main {
         padding: 2rem 1.5rem;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: block;
       }
 
       .schedule-card {
@@ -927,6 +996,10 @@
 
       .tomorrow-section {
         padding: 2rem;
+      }
+
+      footer {
+        padding-bottom: calc(3rem + 80px);
       }
     }
   </style>
@@ -1368,6 +1441,36 @@
     <p><span>The Church of Eleven22</span> Creative Offsite • February 3-4, 2025 • The Retreat Center</p>
   </footer>
 
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav">
+    <div class="mobile-nav-inner">
+      <a href="#schedule" class="active">
+        <span class="nav-icon">📅</span>
+        <span class="nav-label">Today</span>
+      </a>
+      <a href="#neighbors">
+        <span class="nav-icon">🌍</span>
+        <span class="nav-label">N2N</span>
+      </a>
+      <a href="#saturated">
+        <span class="nav-icon">🎤</span>
+        <span class="nav-label">Saturated</span>
+      </a>
+      <a href="#worksheet">
+        <span class="nav-icon">💡</span>
+        <span class="nav-label">Ideas</span>
+      </a>
+      <a href="#special">
+        <span class="nav-icon">⭐</span>
+        <span class="nav-label">Special</span>
+      </a>
+      <a href="#tomorrow">
+        <span class="nav-icon">→</span>
+        <span class="nav-label">Wed</span>
+      </a>
+    </div>
+  </nav>
+
   <!-- Scripture Modal -->
   <div class="modal-overlay" id="scriptureModal">
     <div class="modal">
@@ -1454,32 +1557,36 @@
       });
     });
 
-    // Navigation
-    document.querySelectorAll('nav a').forEach(link => {
+    // Navigation - handle both desktop and mobile nav
+    document.querySelectorAll('nav a, .mobile-nav a').forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const href = this.getAttribute('href');
+        const target = document.querySelector(href);
         if (target) {
-          const offset = 80;
+          const isMobile = window.innerWidth <= 768;
+          const offset = isMobile ? 20 : 80;
           const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
           window.scrollTo({ top, behavior: 'smooth' });
         }
-        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-        this.classList.add('active');
+        // Update active state on all matching links
+        document.querySelectorAll('nav a, .mobile-nav a').forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === href);
+        });
       });
     });
 
-    // Active nav on scroll
+    // Active nav on scroll - update both desktop and mobile
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute('id');
-          document.querySelectorAll('nav a').forEach(link => {
+          document.querySelectorAll('nav a, .mobile-nav a').forEach(link => {
             link.classList.toggle('active', link.getAttribute('href') === '#' + id);
           });
         }
       });
-    }, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
+    }, { threshold: 0.2, rootMargin: '-20px 0px -60% 0px' });
 
     document.querySelectorAll('section[id]').forEach(section => observer.observe(section));
 
