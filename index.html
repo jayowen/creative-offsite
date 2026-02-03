@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Offsite | The Church of Eleven22</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --charcoal: #101828;
+      --slate: #475467;
+      --accent: #892c29;
+      --accent-light: #a63d3a;
+      --off-white: #F9FAFB;
+      --warm-white: #FFFCF7;
+      --text-dark: #1D2939;
+      --text-muted: #667085;
+      --border: #E4E7EC;
+      --success: #059669;
+      --warning: #D97706;
+      --coral: #b34540;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--charcoal);
+      color: white;
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 3rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(137, 44, 41, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(166, 61, 58, 0.15) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--accent-light);
+    }
+
+    .hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent-light);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .hero-meta-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .hero-meta-value {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .today-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .today-pill::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Navigation */
+    nav {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .nav-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--slate);
+      padding: 1.25rem 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      white-space: nowrap;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 1.5rem;
+      right: 1.5rem;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    nav a:hover {
+      color: var(--charcoal);
+    }
+
+    nav a.active {
+      color: var(--accent);
+    }
+
+    nav a.active::after {
+      transform: scaleX(1);
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    section {
+      margin-bottom: 5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .section-header h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      color: var(--charcoal);
+      letter-spacing: -0.02em;
+    }
+
+    .section-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(137, 44, 41, 0.08);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+    }
+
+    /* Schedule Cards */
+    .schedule-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .schedule-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: 140px 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      border: 1px solid var(--border);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .schedule-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .schedule-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 24px rgba(137, 44, 41, 0.08);
+    }
+
+    .schedule-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .schedule-card.break-card {
+      background: var(--off-white);
+      border-color: transparent;
+    }
+
+    .schedule-card.break-card::before {
+      background: var(--slate);
+    }
+
+    .schedule-time {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .schedule-content h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+
+    .schedule-content p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .schedule-duration {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--off-white);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+    }
+
+    /* Series Hero Cards */
+    .series-hero {
+      background: var(--charcoal);
+      border-radius: 24px;
+      padding: 3rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .series-hero.with-image {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .series-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--accent) 0%, transparent 70%);
+      opacity: 0.15;
+    }
+
+    .series-hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .series-hero-image {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .series-hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .series-hero.saturated {
+      background: linear-gradient(135deg, #1c1917 0%, #292524 100%);
+    }
+
+    .series-hero.saturated::before {
+      background: linear-gradient(135deg, var(--accent) 0%, transparent 70%);
+    }
+
+    .series-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      background: rgba(166, 61, 58, 0.25);
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .saturated .series-tag {
+      color: var(--accent-light);
+      background: rgba(166, 61, 58, 0.25);
+    }
+
+    .series-hero h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .series-hero .dates {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .series-hero p {
+      font-size: 1rem;
+      opacity: 0.7;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+
+    /* Week Table */
+    .week-table-container {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .week-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .week-table th {
+      background: var(--off-white);
+      padding: 1rem 1.5rem;
+      text-align: left;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--slate);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .week-table td {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+
+    .week-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .week-table tr {
+      transition: background 0.2s;
+    }
+
+    .week-table tr:hover {
+      background: rgba(137, 44, 41, 0.04);
+    }
+
+    .week-num {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .week-date {
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+
+    .week-topic {
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+
+    .scripture-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    .scripture-link:hover {
+      color: var(--accent-light);
+    }
+
+    .scripture-link::after {
+      content: '→';
+      transition: transform 0.2s;
+    }
+
+    .scripture-link:hover::after {
+      transform: translateX(3px);
+    }
+
+    .special-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+      color: #92400E;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      margin-top: 0.5rem;
+    }
+
+    /* Key Dates Card */
+    .key-dates-card {
+      background: linear-gradient(135deg, var(--accent) 0%, #a63d3a 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    .key-dates-card h4 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+      font-weight: 400;
+    }
+
+    .key-dates-card ul {
+      list-style: none;
+    }
+
+    .key-dates-card li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      gap: 1rem;
+    }
+
+    .key-dates-card li:last-child {
+      border-bottom: none;
+    }
+
+    .key-dates-card strong {
+      font-weight: 600;
+      min-width: 120px;
+    }
+
+    /* Speaker Grid */
+    .speaker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .speaker-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .speaker-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+
+    .speaker-card.featured {
+      background: var(--charcoal);
+      color: white;
+      border-color: var(--charcoal);
+    }
+
+    .speaker-day {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .featured .speaker-day {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .speaker-date {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.5rem;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .featured .speaker-date {
+      color: white;
+    }
+
+    .speaker-name {
+      font-weight: 600;
+      color: var(--charcoal);
+      font-size: 1rem;
+    }
+
+    .featured .speaker-name {
+      color: white;
+    }
+
+    .speaker-note {
+      font-size: 0.8rem;
+      color: var(--accent-light);
+      margin-top: 0.5rem;
+    }
+
+    /* Worksheet Grid */
+    .worksheet-intro {
+      font-size: 1.1rem;
+      color: var(--slate);
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .worksheet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    .worksheet-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .worksheet-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 24px rgba(137, 44, 41, 0.08);
+    }
+
+    .worksheet-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .worksheet-num {
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      color: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .worksheet-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .worksheet-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Events List */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .event-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .event-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 24px rgba(137, 44, 41, 0.08);
+    }
+
+    .event-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      color: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .event-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+
+    .event-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* Tomorrow Section */
+    .tomorrow-section {
+      background: var(--off-white);
+      border-radius: 24px;
+      padding: 3rem;
+    }
+
+    .tomorrow-section .section-header {
+      margin-bottom: 2rem;
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(16, 24, 40, 0.8);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      background: white;
+      border-radius: 24px;
+      max-width: 700px;
+      width: 100%;
+      max-height: 85vh;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+      animation: modalIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal-header {
+      background: var(--charcoal);
+      color: white;
+      padding: 1.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 1.4rem;
+    }
+
+    .modal-header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .esv-badge {
+      background: var(--accent);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .modal-close {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      font-size: 1.25rem;
+    }
+
+    .modal-close:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .modal-body {
+      padding: 2rem;
+      overflow-y: auto;
+      max-height: calc(85vh - 90px);
+    }
+
+    .scripture-text {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.2rem;
+      line-height: 2;
+      color: var(--text-dark);
+    }
+
+    .scripture-text .verse-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.7rem;
+      vertical-align: super;
+      margin-right: 3px;
+    }
+
+    .scripture-text p {
+      margin-bottom: 1rem;
+    }
+
+    .scripture-text .jesus-words {
+      color: #B91C1C;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      border-top: 1px solid var(--border);
+    }
+
+    footer span {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 2rem 1.5rem;
+        min-height: 40vh;
+      }
+
+      main {
+        padding: 2rem 1.5rem;
+      }
+
+      .schedule-card {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        padding: 1.25rem 1.5rem;
+      }
+
+      .schedule-duration {
+        width: fit-content;
+      }
+
+      .series-hero {
+        padding: 2rem;
+      }
+
+      .series-hero.with-image {
+        grid-template-columns: 1fr;
+      }
+
+      .series-hero-image {
+        order: -1;
+      }
+
+      .series-hero-image img {
+        max-width: 280px;
+      }
+
+      .week-table th, .week-table td {
+        padding: 1rem;
+      }
+
+      .tomorrow-section {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">The Church of Eleven22</div>
+      <h1>Creative <em>Offsite</em></h1>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Location</span>
+          <span class="hero-meta-value">The Retreat Center</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Dates</span>
+          <span class="hero-meta-value">February 3-4, 2025</span>
+        </div>
+        <div class="today-pill">Today: Tuesday, February 3</div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#schedule" class="active">Today's Schedule</a>
+      <a href="#neighbors">Neighbors to Nations</a>
+      <a href="#saturated">Saturated</a>
+      <a href="#worksheet">Brainstorm Guide</a>
+      <a href="#special">Special Services</a>
+      <a href="#tomorrow">Tomorrow</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Today's Schedule -->
+    <section id="schedule">
+      <div class="section-header">
+        <h2>Tuesday Schedule</h2>
+        <span class="section-badge">Day 1 of 2</span>
+      </div>
+
+      <div class="schedule-grid">
+        <div class="schedule-card break-card">
+          <div class="schedule-time">8:45 – 9:00am</div>
+          <div class="schedule-content">
+            <h3>Breakfast</h3>
+          </div>
+          <span class="schedule-duration">15 min</span>
+        </div>
+
+        <div class="schedule-card">
+          <div class="schedule-time">9:00 – 11:00am</div>
+          <div class="schedule-content">
+            <h3>Bible Study</h3>
+            <p>Neighbors to Nations (5 wks) – Pastor Joby</p>
+          </div>
+          <span class="schedule-duration">2 hrs</span>
+        </div>
+
+        <div class="schedule-card">
+          <div class="schedule-time">11:00am – 12:00pm</div>
+          <div class="schedule-content">
+            <h3>Brainstorm</h3>
+            <p>Neighbors to Nations</p>
+          </div>
+          <span class="schedule-duration">1 hr</span>
+        </div>
+
+        <div class="schedule-card break-card">
+          <div class="schedule-time">12:00 – 12:30pm</div>
+          <div class="schedule-content">
+            <h3>Lunch</h3>
+            <p>Outside Conference Center • Pastor Joby, Bo, Pastor Britt, Ali meet re: Student Camp</p>
+          </div>
+          <span class="schedule-duration">30 min</span>
+        </div>
+
+        <div class="schedule-card">
+          <div class="schedule-time">12:30 – 1:30pm</div>
+          <div class="schedule-content">
+            <h3>Keep/Kill + Programming</h3>
+            <p>Neighbors to Nations</p>
+          </div>
+          <span class="schedule-duration">1 hr</span>
+        </div>
+
+        <div class="schedule-card">
+          <div class="schedule-time">1:30 – 2:30pm</div>
+          <div class="schedule-content">
+            <h3>Brainstorm + Program</h3>
+            <p>Neighborhood Nights</p>
+          </div>
+          <span class="schedule-duration">1 hr</span>
+        </div>
+
+        <div class="schedule-card">
+          <div class="schedule-time">2:30 – 3:30pm</div>
+          <div class="schedule-content">
+            <h3>Special Service Discussion</h3>
+            <p>Easter services, Dec 27 prison service, Dec 31 services</p>
+          </div>
+          <span class="schedule-duration">1 hr</span>
+        </div>
+
+        <div class="schedule-card break-card">
+          <div class="schedule-time">3:30 – 6:30pm</div>
+          <div class="schedule-content">
+            <h3>Break</h3>
+          </div>
+          <span class="schedule-duration">3 hrs</span>
+        </div>
+
+        <div class="schedule-card break-card">
+          <div class="schedule-time">6:30 – 7:30pm</div>
+          <div class="schedule-content">
+            <h3>Dinner</h3>
+            <p>Tavern</p>
+          </div>
+          <span class="schedule-duration">1 hr</span>
+        </div>
+
+        <div class="schedule-card">
+          <div class="schedule-time">7:30 – 9:00pm</div>
+          <div class="schedule-content">
+            <h3>Brainstorm</h3>
+            <p>Advance Commitment Night</p>
+          </div>
+          <span class="schedule-duration">1.5 hrs</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Neighbors to Nations Series -->
+    <section id="neighbors">
+      <div class="section-header">
+        <h2>Neighbors to Nations</h2>
+      </div>
+
+      <div class="series-hero with-image">
+        <div class="series-hero-content">
+          <span class="series-tag">Matthew Season 8</span>
+          <h3>Neighbors to Nations</h3>
+          <div class="dates">October 22 – November 22 (5 weeks)</div>
+          <p>Pastor Joby teaching through key passages on the Great Commission and living out our faith.</p>
+        </div>
+        <div class="series-hero-image">
+          <img src="n2n-artwork.png" alt="Neighbors to Nations - Go Make Disciples of All Nations - Matthew 28:19">
+        </div>
+      </div>
+
+      <div class="week-table-container">
+        <table class="week-table">
+          <thead>
+            <tr>
+              <th>Week</th>
+              <th>Date</th>
+              <th>Topic</th>
+              <th>Scripture</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="week-num">1</span></td>
+              <td class="week-date">Oct 22/25</td>
+              <td class="week-topic">Great Commission</td>
+              <td><a href="#" class="scripture-link" data-passage="matt28">Matthew 28:16-20</a></td>
+            </tr>
+            <tr>
+              <td><span class="week-num">2</span></td>
+              <td class="week-date">Oct 29/Nov 1</td>
+              <td class="week-topic">Treasure</td>
+              <td><a href="#" class="scripture-link" data-passage="matt6">Matthew 6:19-24</a></td>
+            </tr>
+            <tr>
+              <td><span class="week-num">3</span></td>
+              <td class="week-date">Nov 5/8</td>
+              <td class="week-topic">
+                Walk on Water
+                <div class="special-badge">Advance Commitment Night: Nov 6/7</div>
+              </td>
+              <td><a href="#" class="scripture-link" data-passage="matt14">Matthew 14:22-33</a></td>
+            </tr>
+            <tr>
+              <td><span class="week-num">4</span></td>
+              <td class="week-date">Nov 12/15</td>
+              <td class="week-topic">Upon This Rock</td>
+              <td><a href="#" class="scripture-link" data-passage="matt16">Matthew 16:13-20</a></td>
+            </tr>
+            <tr>
+              <td><span class="week-num">5</span></td>
+              <td class="week-date">Nov 19/22</td>
+              <td class="week-topic">
+                Don't Waste Your Life
+                <div class="special-badge">Commitment Weekend</div>
+              </td>
+              <td><a href="#" class="scripture-link" data-passage="matt25">Matthew 25:14-30</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="key-dates-card">
+        <h4>Key Dates to Remember</h4>
+        <ul>
+          <li><strong>November 6-7</strong> Advance Commitment Night</li>
+          <li><strong>November 19-22</strong> Commitment Weekend</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Saturated -->
+    <section id="saturated">
+      <div class="section-header">
+        <h2>Saturated</h2>
+      </div>
+
+      <div class="series-hero saturated">
+        <div class="series-hero-content">
+          <span class="series-tag">Final Week of Season 6</span>
+          <h3>Saturated</h3>
+          <div class="dates">September 16-20</div>
+          <p>Religion to Redemption – Special multi-speaker event with guest speakers each night.</p>
+        </div>
+      </div>
+
+      <div class="speaker-grid">
+        <div class="speaker-card">
+          <div class="speaker-day">Wednesday</div>
+          <div class="speaker-date">Sept 16</div>
+          <div class="speaker-name">Robbie Gallaty</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-day">Thursday</div>
+          <div class="speaker-date">Sept 17</div>
+          <div class="speaker-name">Jennie Allen</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-day">Friday</div>
+          <div class="speaker-date">Sept 18</div>
+          <div class="speaker-name">Jonathan Pokluda</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-day">Saturday</div>
+          <div class="speaker-date">Sept 19</div>
+          <div class="speaker-name">Jason Sheppard</div>
+        </div>
+        <div class="speaker-card featured">
+          <div class="speaker-day">Sunday</div>
+          <div class="speaker-date">Sept 20</div>
+          <div class="speaker-name">Pastor Joby</div>
+          <div class="speaker-note">Matthew 26:1-16</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brainstorm Worksheet -->
+    <section id="worksheet">
+      <div class="section-header">
+        <h2>Brainstorm Guide</h2>
+      </div>
+      <p class="worksheet-intro">Use these categories when planning each series element. Each prompt helps ensure comprehensive creative planning.</p>
+
+      <div class="worksheet-grid">
+        <div class="worksheet-card">
+          <div class="worksheet-header">
+            <span class="worksheet-num">1</span>
+            <h4>Title</h4>
+          </div>
+          <p>What are some title options? What title would help people remember the content?</p>
+        </div>
+        <div class="worksheet-card">
+          <div class="worksheet-header">
+            <span class="worksheet-num">2</span>
+            <h4>Look/Feel</h4>
+          </div>
+          <p>What does staging and environment look like at each campus?</p>
+        </div>
+        <div class="worksheet-card">
+          <div class="worksheet-header">
+            <span class="worksheet-num">3</span>
+            <h4>Branding/Design</h4>
+          </div>
+          <p>What are some ideas for branding? Gather photos or links to design inspiration.</p>
+        </div>
+        <div class="worksheet-card">
+          <div class="worksheet-header">
+            <span class="worksheet-num">4</span>
+            <h4>Story/Video</h4>
+          </div>
+          <p>What would the video elements look like? What life change stories could we tell?</p>
+        </div>
+        <div class="worksheet-card">
+          <div class="worksheet-header">
+            <span class="worksheet-num">5</span>
+            <h4>Response</h4>
+          </div>
+          <p>Are there any weeks we could call people to a specific action during response time?</p>
+        </div>
+        <div class="worksheet-card">
+          <div class="worksheet-header">
+            <span class="worksheet-num">6</span>
+            <h4>In-Service Elements</h4>
+          </div>
+          <p>In addition to singing, what are ways we can engage people in worship prior to preaching?</p>
+        </div>
+        <div class="worksheet-card">
+          <div class="worksheet-header">
+            <span class="worksheet-num">7</span>
+            <h4>Connect/Next Steps</h4>
+          </div>
+          <p>What events or next step opportunities? Resources to provide? Ministry partnerships?</p>
+        </div>
+        <div class="worksheet-card">
+          <div class="worksheet-header">
+            <span class="worksheet-num">8</span>
+            <h4>Kingdom Resources</h4>
+          </div>
+          <p>Content we could create? Social media opportunities? Resources to give people?</p>
+        </div>
+        <div class="worksheet-card">
+          <div class="worksheet-header">
+            <span class="worksheet-num">9</span>
+            <h4>Music</h4>
+          </div>
+          <p>Specific song ideas for this series? Any new songs we don't currently sing?</p>
+        </div>
+        <div class="worksheet-card">
+          <div class="worksheet-header">
+            <span class="worksheet-num">10</span>
+            <h4>Generosity</h4>
+          </div>
+          <p>Are there stories of generosity we can tell this series?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Special Services -->
+    <section id="special">
+      <div class="section-header">
+        <h2>Special Services</h2>
+      </div>
+
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-icon">✝</div>
+          <div>
+            <h4>Easter Services</h4>
+            <p>Planning service times and creative elements</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-icon">♥</div>
+          <div>
+            <h4>December 27 Prison Service</h4>
+            <p>Special service planning</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-icon">★</div>
+          <div>
+            <h4>December 31 Services</h4>
+            <p>New Year's Eve service planning</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-icon">⌂</div>
+          <div>
+            <h4>Neighborhood Nights</h4>
+            <p>Community outreach event programming</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-icon">✓</div>
+          <div>
+            <h4>Advance Commitment Night</h4>
+            <p>November 6-7 special evening</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wednesday Preview -->
+    <section id="tomorrow" class="tomorrow-section">
+      <div class="section-header">
+        <h2>Tomorrow: Wednesday</h2>
+        <span class="section-badge">Day 2 of 2</span>
+      </div>
+
+      <div class="schedule-grid">
+        <div class="schedule-card break-card">
+          <div class="schedule-time">8:45 – 9:00am</div>
+          <div class="schedule-content">
+            <h3>Breakfast + Coffee</h3>
+            <p>Conference Center</p>
+          </div>
+          <span class="schedule-duration">15 min</span>
+        </div>
+
+        <div class="schedule-card">
+          <div class="schedule-time">9:00 – 11:00am</div>
+          <div class="schedule-content">
+            <h3>Brainstorm</h3>
+            <p>Saturated</p>
+          </div>
+          <span class="schedule-duration">2 hrs</span>
+        </div>
+
+        <div class="schedule-card">
+          <div class="schedule-time">11:00am – 12:30pm</div>
+          <div class="schedule-content">
+            <h3>Series Check-In</h3>
+            <p>Matthew Season 5 (11 weeks)</p>
+          </div>
+          <span class="schedule-duration">1.5 hrs</span>
+        </div>
+
+        <div class="schedule-card break-card">
+          <div class="schedule-time">12:30pm</div>
+          <div class="schedule-content">
+            <h3>Lunch</h3>
+            <p>Outside Conference Center</p>
+          </div>
+          <span class="schedule-duration">30 min</span>
+        </div>
+
+        <div class="schedule-card">
+          <div class="schedule-time">1:00pm</div>
+          <div class="schedule-content">
+            <h3>Dismissal + Clean Up</h3>
+          </div>
+          <span class="schedule-duration"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><span>The Church of Eleven22</span> Creative Offsite • February 3-4, 2025 • The Retreat Center</p>
+  </footer>
+
+  <!-- Scripture Modal -->
+  <div class="modal-overlay" id="scriptureModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">Scripture</h3>
+        <div class="modal-header-right">
+          <span class="esv-badge">ESV</span>
+          <button class="modal-close" onclick="closeModal()">×</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="scripture-text" id="modalContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ESV Scripture Data (static trusted content)
+    const scriptures = {
+      matt28: {
+        title: "Matthew 28:16-20",
+        topic: "The Great Commission",
+        text: `<p><span class="verse-num">16</span>Now the eleven disciples went to Galilee, to the mountain to which Jesus had directed them. <span class="verse-num">17</span>And when they saw him they worshiped him, but some doubted. <span class="verse-num">18</span>And Jesus came and said to them, <span class="jesus-words">"All authority in heaven and on earth has been given to me. <span class="verse-num">19</span>Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, <span class="verse-num">20</span>teaching them to observe all that I have commanded you. And behold, I am with you always, to the end of the age."</span></p>`
+      },
+      matt6: {
+        title: "Matthew 6:19-24",
+        topic: "Treasure",
+        text: `<p><span class="verse-num">19</span><span class="jesus-words">"Do not lay up for yourselves treasures on earth, where moth and rust destroy and where thieves break in and steal, <span class="verse-num">20</span>but lay up for yourselves treasures in heaven, where neither moth nor rust destroys and where thieves do not break in and steal. <span class="verse-num">21</span>For where your treasure is, there your heart will be also.</span></p>
+<p><span class="verse-num">22</span><span class="jesus-words">"The eye is the lamp of the body. So, if your eye is healthy, your whole body will be full of light, <span class="verse-num">23</span>but if your eye is bad, your whole body will be full of darkness. If then the light in you is darkness, how great is the darkness!</span></p>
+<p><span class="verse-num">24</span><span class="jesus-words">"No one can serve two masters, for either he will hate the one and love the other, or he will be devoted to the one and despise the other. You cannot serve God and money.</span></p>`
+      },
+      matt14: {
+        title: "Matthew 14:22-33",
+        topic: "Walk on Water",
+        text: `<p><span class="verse-num">22</span>Immediately he made the disciples get into the boat and go before him to the other side, while he dismissed the crowds. <span class="verse-num">23</span>And after he had dismissed the crowds, he went up on the mountain by himself to pray. When evening came, he was there alone, <span class="verse-num">24</span>but the boat by this time was a long way from the land, beaten by the waves, for the wind was against them. <span class="verse-num">25</span>And in the fourth watch of the night he came to them, walking on the sea. <span class="verse-num">26</span>But when the disciples saw him walking on the sea, they were terrified, and said, "It is a ghost!" and they cried out in fear. <span class="verse-num">27</span>But immediately Jesus spoke to them, saying, <span class="jesus-words">"Take heart; it is I. Do not be afraid."</span></p>
+<p><span class="verse-num">28</span>And Peter answered him, "Lord, if it is you, command me to come to you on the water." <span class="verse-num">29</span>He said, <span class="jesus-words">"Come."</span> So Peter got out of the boat and walked on the water and came to Jesus. <span class="verse-num">30</span>But when he saw the wind, he was afraid, and beginning to sink he cried out, "Lord, save me." <span class="verse-num">31</span>Jesus immediately reached out his hand and took hold of him, saying to him, <span class="jesus-words">"O you of little faith, why did you doubt?"</span> <span class="verse-num">32</span>And when they got into the boat, the wind ceased. <span class="verse-num">33</span>And those in the boat worshiped him, saying, "Truly you are the Son of God."</p>`
+      },
+      matt16: {
+        title: "Matthew 16:13-20",
+        topic: "Upon This Rock",
+        text: `<p><span class="verse-num">13</span>Now when Jesus came into the district of Caesarea Philippi, he asked his disciples, <span class="jesus-words">"Who do people say that the Son of Man is?"</span> <span class="verse-num">14</span>And they said, "Some say John the Baptist, others say Elijah, and others Jeremiah or one of the prophets." <span class="verse-num">15</span>He said to them, <span class="jesus-words">"But who do you say that I am?"</span> <span class="verse-num">16</span>Simon Peter replied, "You are the Christ, the Son of the living God." <span class="verse-num">17</span>And Jesus answered him, <span class="jesus-words">"Blessed are you, Simon Bar-Jonah! For flesh and blood has not revealed this to you, but my Father who is in heaven. <span class="verse-num">18</span>And I tell you, you are Peter, and on this rock I will build my church, and the gates of hell shall not prevail against it. <span class="verse-num">19</span>I will give you the keys of the kingdom of heaven, and whatever you bind on earth shall be bound in heaven, and whatever you loose on earth shall be loosed in heaven."</span> <span class="verse-num">20</span>Then he strictly charged the disciples to tell no one that he was the Christ.</p>`
+      },
+      matt25: {
+        title: "Matthew 25:14-30",
+        topic: "Don't Waste Your Life (Parable of the Talents)",
+        text: `<p><span class="verse-num">14</span><span class="jesus-words">"For it will be like a man going on a journey, who called his servants and entrusted to them his property. <span class="verse-num">15</span>To one he gave five talents, to another two, to another one, to each according to his ability. Then he went away. <span class="verse-num">16</span>He who had received the five talents went at once and traded with them, and he made five talents more. <span class="verse-num">17</span>So also he who had the two talents made two talents more. <span class="verse-num">18</span>But he who had received the one talent went and dug in the ground and hid his master's money.</span></p>
+<p><span class="verse-num">19</span><span class="jesus-words">"Now after a long time the master of those servants came and settled accounts with them. <span class="verse-num">20</span>And he who had received the five talents came forward, bringing five talents more, saying, 'Master, you delivered to me five talents; here, I have made five talents more.' <span class="verse-num">21</span>His master said to him, 'Well done, good and faithful servant. You have been faithful over a little; I will set you over much. Enter into the joy of your master.' <span class="verse-num">22</span>And he also who had the two talents came forward, saying, 'Master, you delivered to me two talents; here, I have made two talents more.' <span class="verse-num">23</span>His master said to him, 'Well done, good and faithful servant. You have been faithful over a little; I will set you over much. Enter into the joy of your master.'</span></p>
+<p><span class="verse-num">24</span><span class="jesus-words">"He also who had received the one talent came forward, saying, 'Master, I knew you to be a hard man, reaping where you did not sow, and gathering where you scattered no seed, <span class="verse-num">25</span>so I was afraid, and I went and hid your talent in the ground. Here, you have what is yours.' <span class="verse-num">26</span>But his master answered him, 'You wicked and slothful servant! You knew that I reap where I have not sown and gather where I scattered no seed? <span class="verse-num">27</span>Then you ought to have invested my money with the bankers, and at my coming I should have received what was my own with interest. <span class="verse-num">28</span>So take the talent from him and give it to him who has the ten talents. <span class="verse-num">29</span>For to everyone who has will more be given, and he will have an abundance. But from the one who has not, even what he has will be taken away. <span class="verse-num">30</span>And cast the worthless servant into the outer darkness. In that place there will be weeping and gnashing of teeth.'"</span></p>`
+      }
+    };
+
+    // Modal functions
+    function openModal(passageKey) {
+      const passage = scriptures[passageKey];
+      if (passage) {
+        const titleEl = document.getElementById('modalTitle');
+        const contentEl = document.getElementById('modalContent');
+        titleEl.textContent = '';
+        contentEl.textContent = '';
+        titleEl.insertAdjacentHTML('beforeend', passage.title + ' <span style="opacity:0.6;font-weight:normal;font-size:0.85rem;font-family:Plus Jakarta Sans,sans-serif;">— ' + passage.topic + '</span>');
+        contentEl.insertAdjacentHTML('beforeend', passage.text);
+        document.getElementById('scriptureModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('scriptureModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('scriptureModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    document.querySelectorAll('.scripture-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        openModal(this.getAttribute('data-passage'));
+      });
+    });
+
+    // Navigation
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Active nav on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          document.querySelectorAll('nav a').forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
+
+    document.querySelectorAll('section[id]').forEach(section => observer.observe(section));
+
+    // Animate cards on scroll
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.schedule-card, .worksheet-card, .event-card, .speaker-card').forEach((card, i) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = `opacity 0.5s ease ${i * 0.05}s, transform 0.5s ease ${i * 0.05}s`;
+      cardObserver.observe(card);
+    });
+  </script>
+</body>
+</html>
